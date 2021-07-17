@@ -1,0 +1,21 @@
+<h2>Per Country</h2>
+<hr />
+
+<div class="row">
+  <div class="col">
+    <app-input-search
+      [placeholder]="placeholder"
+      (onEnter)="onSearch($event)"
+      (onDebounce)="sugerencies($event)"
+    ></app-input-search>
+  </div>
+</div>
+<hr />
+
+<div *ngIf="error" class="alert alert-danger">No found Country</div>
+
+<div *ngIf="countries.length" class="row">
+  <div class="col">
+    <app-table [countries]="countries"></app-table>
+  </div>
+</div>

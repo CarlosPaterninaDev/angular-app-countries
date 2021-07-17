@@ -1,0 +1,21 @@
+<h2>Per Capital</h2>
+<hr />
+
+<div class="row">
+  <div class="col">
+    <app-input-search
+      [placeholder]="placeholder"
+      (onEnter)="onSearch($event)"
+      (onDebounce)="sugerencies($event)"
+    ></app-input-search>
+  </div>
+</div>
+<hr />
+
+<div *ngIf="error" class="alert alert-danger">No found Capital</div>
+
+<div *ngIf="capitals.length" class="row">
+  <div class="col">
+    <app-table [countries]="capitals"></app-table>
+  </div>
+</div>
