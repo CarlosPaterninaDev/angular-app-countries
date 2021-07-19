@@ -19,7 +19,7 @@ export class InputSearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.debouncer
-      .pipe(debounceTime(1000))
+      .pipe(debounceTime(500))
       .subscribe((query) => this.onDebounce.emit(query));
   }
 

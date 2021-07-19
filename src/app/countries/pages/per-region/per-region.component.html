@@ -1,1 +1,20 @@
-<p>per-region works!</p>
+<h2 class="animate__animated animate__fadeIn animate__faster">
+  Serch per Region <small> {{ activeRegion | titlecase }}</small>
+</h2>
+
+<h5 class="animate__animated animate__fadeIn">Choise a region</h5>
+
+<div class="row">
+  <div class="col">
+    <button
+      (click)="selectRegion(region)"
+      class="btn"
+      [class]="region === activeRegion ? 'btn-primary' : 'btn-outline-primary'"
+      *ngFor="let region of regions"
+    >
+      {{ region | titlecase }}
+    </button>
+  </div>
+</div>
+
+<app-table [countries]="countries"> </app-table>

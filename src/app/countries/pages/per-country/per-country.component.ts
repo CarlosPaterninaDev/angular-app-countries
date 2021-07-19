@@ -9,6 +9,8 @@ import { Country } from '../../interfaces/country.interface';
 export class PerCountryComponent implements OnInit {
   error = false;
   countries: Country[] = [];
+  suggestedCountries: Country[] = [];
+  query = '';
   placeholder = 'search country';
 
   constructor(private _countryService: CountryService) {}
@@ -27,8 +29,16 @@ export class PerCountryComponent implements OnInit {
   }
 
   sugerencies(ev: string) {
+    this.query = ev;
     this.error = false;
 
     console.log(ev);
+    this._countryService.getCountry(ev).subscribe(
+      (countries) => (this.suggestedCountries = countries.splice(0, 5)),
+      () => {
+        this.error = true;
+        this.suggestedCountries = [];
+      }
+    );
   }
 }

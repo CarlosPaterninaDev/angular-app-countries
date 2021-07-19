@@ -1,4 +1,4 @@
-<h2>Per Country</h2>
+<h2 class="animate__animated animate__fadeIn animate__faster">Per Country</h2>
 <hr />
 
 <div class="row">
@@ -10,6 +10,29 @@
     ></app-input-search>
   </div>
 </div>
+
+<ul class="list-group">
+  <li
+    *ngFor="let suggestedCountry of suggestedCountries"
+    class="
+      list-group-item list-group-item-action
+      animate__animated animate__fadeIn animate__faster
+    "
+  >
+    <a class="nav-link" [routerLink]="['country', suggestedCountry.alpha2Code]">
+      {{ suggestedCountry.name }}</a
+    >
+  </li>
+  <li
+    *ngIf="suggestedCountries.length"
+    class="list-group-item animate__animated animate__fadeIn animate__faster"
+  >
+    <a class="nav-link"
+      >Press <strong>Enter</strong> to search values of "{{ query }}..."</a
+    >
+  </li>
+</ul>
+
 <hr />
 
 <div *ngIf="error" class="alert alert-danger">No found Country</div>
